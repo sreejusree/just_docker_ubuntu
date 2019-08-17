@@ -25,6 +25,7 @@ stages:
       inputs:
         command: build
         dockerfile: '**/Dockerfile'
+        repository: myubuntu
         tags: |
           $(tag)
     - task: CmdLine@2
