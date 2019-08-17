@@ -10,6 +10,7 @@ resources:
 
 variables:
   tag: '1.0'
+  newrepo: 'sreeju:1.0'
 
 stages:
 - stage: Build
@@ -27,8 +28,11 @@ stages:
         dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
-        arguments: -t sreeju:1.0
+        arguments: -t $(newrepo)
     - script: docker images
+    - script: docker ps -a
+    - script: docker ps
+    - script: docker run -it $(newrepo)
     - script: docker ps -a
     - script: docker ps
 
