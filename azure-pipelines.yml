@@ -38,7 +38,7 @@ stages:
     displayName: run the container
     steps:
     - task: CmdLine@2
-    - script: docker run -it sreeju:1.0 echo hello
+#    - script: docker run -it sreeju:1.0 echo hello
     - script: docker images
     - script: docker ps -a
     - script: docker ps
