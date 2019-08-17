@@ -1,0 +1,1 @@
+Nothing but ubuntu base for container tests on Azure
