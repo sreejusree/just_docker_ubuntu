@@ -32,7 +32,7 @@ stages:
     - script: docker images
     - script: docker ps -a
     - script: docker ps
-    - script: docker run -it $(newrepo)
+    - script: docker run $(newrepo)
     - script: docker ps -a
     - script: docker ps
 
