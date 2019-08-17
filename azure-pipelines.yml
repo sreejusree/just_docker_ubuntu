@@ -31,6 +31,9 @@ stages:
     - script: docker images
     - script: docker ps -a
     - script: docker ps
+
+- stage: Run
+  jobs:
   - job: Run
     displayName: run the container
     steps:
