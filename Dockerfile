@@ -1,1 +1,1 @@
-import ubuntu:latest
+FROM ubuntu:latest
