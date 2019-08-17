@@ -25,9 +25,9 @@ stages:
       inputs:
         command: build
         dockerfile: '**/Dockerfile'
-        repository: 'myubuntu'
         tags: |
           $(tag)
+        arguments: -t sreeju:1.0
     - task: CmdLine@2
       inputs:
         script: docker images
