@@ -3,7 +3,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- master
+  - none
 
 resources:
 - repo: self
@@ -24,11 +24,12 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        command: build
+        command: buildAndPush
         dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
         arguments: -t $(newrepo)
+        containerRegistry: sreejurceg1
     - script: docker images
     - script: docker ps -a
     - script: docker ps
@@ -36,13 +37,13 @@ stages:
     - script: docker ps -a
     - script: docker ps
 
-- stage: Run
-  jobs:
-  - job: Run
-    displayName: run the container
-    steps:
-    - task: CmdLine@2
+#- stage: Run
+#  jobs:
+#  - job: Run
+#    displayName: run the container
+#    steps:
+#    - task: CmdLine@2
 #    - script: docker run -it sreeju:1.0 echo hello
-    - script: docker images
-    - script: docker ps -a
-    - script: docker ps
+#    - script: docker images
+#    - script: docker ps -a
+#    - script: docker ps
