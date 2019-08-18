@@ -46,7 +46,7 @@ stages:
     container:
      endpoint: myazurereg
      image: $(newrepo):$(tag)
-     options: -n myapline -it bash
+     options: -it bash
     steps:
     - task: CmdLine@2
     - script: docker images
