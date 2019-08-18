@@ -13,28 +13,28 @@ variables:
   newrepo: 'sreeju/apline1'
 
 stages:
-- stage: Build
-  displayName: Build image
-  jobs:  
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        command: buildAndPush
-        containerRegistry: myazurereg
-        repository: $(newrepo) 
-        dockerfile: '**/Dockerfile'
-        tags: |
-          $(tag)
+#- stage: Build
+#  displayName: Build image
+#  jobs:  
+#  - job: Build
+#    displayName: Build
+#    pool:
+#      vmImage: 'ubuntu-latest'
+#    steps:
+#    - task: Docker@2
+#      displayName: Build an image
+#      inputs:
+#        command: buildAndPush
+#        containerRegistry: myazurereg
+#        repository: $(newrepo) 
+#        dockerfile: '**/Dockerfile'
+#        tags: |
+#          $(tag)
 #        arguments: -t $(newrepo)
         
-    - script: docker images
-    - script: docker ps -a
-    - script: docker ps
+#    - script: docker images
+#    - script: docker ps -a
+#    - script: docker ps
 #    - script: docker run $(newrepo):$(tag)
 #    - script: docker ps -a
 #    - script: docker ps
