@@ -13,24 +13,24 @@ variables:
   newrepo: 'sreeju/ubuntu1'
 
 stages:
-- stage: Build
-  displayName: Build image
-  jobs:  
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        command: buildAndPush
-        containerRegistry: myazurereg
-        repository: $(newrepo) 
-        dockerfile: '**/Dockerfile'
-        tags: |
-          $(tag)
-        arguments: -t $(newrepo)
+#- stage: Build
+#  displayName: Build image
+#  jobs:  
+#  - job: Build
+#    displayName: Build
+#    pool:
+#      vmImage: 'ubuntu-latest'
+#    steps:
+#    - task: Docker@2
+#      displayName: Build an image
+#      inputs:
+#        command: buildAndPush
+#        containerRegistry: myazurereg
+#        repository: $(newrepo) 
+#        dockerfile: '**/Dockerfile'
+#        tags: |
+#          $(tag)
+#        arguments: -t $(newrepo)
         
 #    - script: docker images
 #    - script: docker ps -a
@@ -49,6 +49,5 @@ stages:
  #    options: --name myalpine -it
     steps:
     - task: CmdLine@2
-    - script: docker images
-    - script: docker ps -a
-    - script: docker ps
+    - script: ls -lrt
+    - script: lsb_release
