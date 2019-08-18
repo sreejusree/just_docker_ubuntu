@@ -29,7 +29,7 @@ stages:
         tags: |
           $(tag)
         arguments: -t $(newrepo)
-        containerRegistry: sreejurceg1
+        containerRegistry: myazurereg
     - script: docker images
     - script: docker ps -a
     - script: docker ps
