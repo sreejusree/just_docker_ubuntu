@@ -10,7 +10,7 @@ resources:
 
 variables:
   tag: '1.0'
-  newrepo: 'sreeju'
+  newrepo: 'sreeju/apline1'
 
 stages:
 - stage: Build
@@ -35,7 +35,7 @@ stages:
     - script: docker images
     - script: docker ps -a
     - script: docker ps
-    - script: docker run $(newrepo)
+    - script: docker run $(newrepo):$(tag)
     - script: docker ps -a
     - script: docker ps
 
