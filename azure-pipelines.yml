@@ -46,7 +46,7 @@ stages:
     container:
      endpoint: myazurereg
      image: $(newrepo):$(tag)
-     options: --name myalpine -it
+     options: --name myalpine -it bash
     steps:
     - task: CmdLine@2
     - script: docker images
