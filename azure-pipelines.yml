@@ -13,23 +13,23 @@ variables:
   newrepo: 'sreeju/ubuntu1'
 
 stages:
-#- stage: Build
-#  displayName: Build image
-#  jobs:  
-#  - job: Build
-#    displayName: Build
-#    pool:
-#      vmImage: 'ubuntu-latest'
-#    steps:
-#    - task: Docker@2
-#      displayName: Build an image
-#      inputs:
-#        command: buildAndPush
-#        containerRegistry: myazurereg
-#        repository: $(newrepo) 
-#        dockerfile: '**/Dockerfile'
-#        tags: |
-#          $(tag)
+- stage: Build
+  displayName: Build image
+  jobs:  
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Docker@2
+      displayName: Build an image
+      inputs:
+        command: buildAndPush
+        containerRegistry: myazurereg
+        repository: $(newrepo) 
+        dockerfile: '**/Dockerfile'
+        tags: |
+          $(tag)
 #        arguments: -t $(newrepo)
         
 #    - script: docker images
@@ -51,3 +51,5 @@ stages:
     - task: CmdLine@2
     - script: ls -lrt
     - script: pwd
+    - script: chmod +x test.sh
+    - script: ./test.sh
