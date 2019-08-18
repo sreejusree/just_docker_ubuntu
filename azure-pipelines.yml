@@ -10,7 +10,7 @@ resources:
 
 variables:
   tag: '1.0'
-  newrepo: 'sreeju:1.0'
+  newrepo: 'sreeju'
 
 stages:
 - stage: Build
@@ -25,11 +25,13 @@ stages:
       displayName: Build an image
       inputs:
         command: buildAndPush
+        containerRegistry: myazurereg
+        repository: $(newrepo)
         dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
-        arguments: -t $(newrepo)
-        containerRegistry: myazurereg
+#        arguments: -t $(newrepo)
+        
     - script: docker images
     - script: docker ps -a
     - script: docker ps
