@@ -26,8 +26,7 @@ stages:
       inputs:
         command: buildAndPush
         containerRegistry: myazurereg
-        repository: $(newrepo)
-        buildContext: 
+        repository: $(newrepo) 
         dockerfile: '**/Dockerfile'
         tags: |
           $(tag)
@@ -36,17 +35,19 @@ stages:
     - script: docker images
     - script: docker ps -a
     - script: docker ps
-    - script: docker run $(newrepo):$(tag)
-    - script: docker ps -a
-    - script: docker ps
-
-#- stage: Run
-#  jobs:
-#  - job: Run
-#    displayName: run the container
-#    steps:
-#    - task: CmdLine@2
-#    - script: docker run -it sreeju:1.0 echo hello
-#    - script: docker images
+#    - script: docker run $(newrepo):$(tag)
 #    - script: docker ps -a
 #    - script: docker ps
+
+- stage: Run
+  jobs:
+  - job: Run
+    displayName: run the container
+    container:
+     endpoint: myazurereg
+     image: $(newrepo):$(tag)
+    steps:
+    - task: CmdLine@2
+    - script: docker images
+    - script: docker ps -a
+    - script: docker ps
