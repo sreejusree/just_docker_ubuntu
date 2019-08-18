@@ -50,4 +50,4 @@ stages:
     steps:
     - task: CmdLine@2
     - script: ls -lrt
-    - script: lsb_release
+    - script: pwd
