@@ -53,10 +53,10 @@ stages:
     - script: pwd
     - script: chmod +x test.sh
     - script: ./test.sh
-    - script: apt install -y wget
+    - script: sudo apt install -y wget
     - script: cd /etc/apt/source.list.d/
     - script: wget http://repo.mosquitto.org/debian/mosquitto-buster.list
-    - script: apt update && apt install -y mosquitto
-    - script: mosquitto -d
+    - script: sudo apt update && apt install -y mosquitto
+    - script: sudo mosquitto -d
     - script: ps -aux | grep mosquitto
 
