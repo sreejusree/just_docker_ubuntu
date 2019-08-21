@@ -13,23 +13,23 @@ variables:
   newrepo: 'sreeju/ubuntu1'
 
 stages:
-- stage: Build
-  displayName: Build image
-  jobs:  
-  - job: Build
-    displayName: Build
-    pool:
-      vmImage: 'ubuntu-latest'
-    steps:
-    - task: Docker@2
-      displayName: Build an image
-      inputs:
-        command: buildAndPush
-        containerRegistry: myazurereg
-        repository: $(newrepo) 
-        dockerfile: '**/Dockerfile'
-        tags: |
-          $(tag)
+#- stage: Build
+#  displayName: Build image
+#  jobs:  
+#  - job: Build
+#    displayName: Build
+#    pool:
+#      vmImage: 'ubuntu-latest'
+#    steps:
+#    - task: Docker@2
+#      displayName: Build an image
+#      inputs:
+#        command: buildAndPush
+#        containerRegistry: myazurereg
+#        repository: $(newrepo) 
+#        dockerfile: '**/Dockerfile'
+#        tags: |
+#          $(tag)
 #        arguments: -t $(newrepo)
         
 #    - script: docker images
@@ -55,4 +55,11 @@ stages:
     - script: ./test.sh
     - script: mosquitto -d
     - script: ps -aux | grep mosquitto
+
+    - task: Docker@2
+      inputs:
+        command: push
+        containerRegistry: myazurereg
+        repository: ubuntuplus
+        tags: $(tag)
 
