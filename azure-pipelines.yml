@@ -55,11 +55,12 @@ stages:
     - script: ./test.sh
     - script: mosquitto -d
     - script: ps -aux | grep mosquitto
+    - script: env
 
-    - task: Docker@2
-      inputs:
-        command: push
-        containerRegistry: myazurereg
-        repository: ubuntuplus
-        tags: $(tag)
+#    - task: Docker@2
+#      inputs:
+#        command: push
+#        containerRegistry: myazurereg
+#        repository: ubuntuplus
+#        tags: $(tag)
 
